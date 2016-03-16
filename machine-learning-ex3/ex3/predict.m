@@ -23,8 +23,12 @@ p = zeros(size(X, 1), 1);
 
 
 
+X = [ones(m, 1) X];
 
-
+a2 = sigmoid(X * Theta1');   %第二层激活函数输出
+a2 = [ones(m, 1) a2];        %第二层加入b
+a3 = sigmoid(a2 * Theta2');  
+[aa,p] = max(a3,[],2);       %返回每行最大值的索引位置，也就是预测的数字
 
 
 
