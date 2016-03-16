@@ -38,8 +38,9 @@ grad = zeros(size(theta));
 
 
 
-
-
+temp = [0;theta(2:end)];    %theta(1)不参与正则化
+J = -1 * sum(y .* log( sigmoid(X*theta)) + (1 - y) .* log((1 - sigmoid(X*theta)))) / m  + lambda/(2*m) * temp' * temp;
+grad = (X' * (sigmoid(X*theta) - y))/ m + lambda/m * temp;
 
 
 
